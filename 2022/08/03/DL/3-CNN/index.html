@@ -16,45 +16,20 @@
   <meta name="author" content="Camille">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介引入  输入：   拉直成一个向量。   但是参数太多，容易over fitting，考虑图像的特性，不一定需要全神经元。 观察1—不用全看neuron会看到特别的pattern来判断图片是什么，比如鸟嘴，鸟眼睛，翅膀等。所以并不需要看完整的图片~     简化1一个neuron在意自己field里发生的事情就好：   那怎么决定看哪个field呢？   第四个问题是指：可不可以不是正方形，长">
+    <meta name="description" content="简介引入    输入：     拉直成一个向量。     但是参数太多，容易over fitting，考虑图像的特性，不一定需要全神经元。 观察1—不用全看neuron会看到特别的pattern来判断图片是什么，比如鸟嘴，鸟眼睛，翅膀等。所以并不需要看完整的图片~     简化1一个neuron在意自己field里发生的事情就好：     那怎么决定看哪个field呢？     第四个问题是指：可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="李宏毅DL3-CNN">
 <meta property="og:url" content="http://example.com/2022/08/03/DL/3-CNN/index.html">
 <meta property="og:site_name" content="Tank Land">
-<meta property="og:description" content="简介引入  输入：   拉直成一个向量。   但是参数太多，容易over fitting，考虑图像的特性，不一定需要全神经元。 观察1—不用全看neuron会看到特别的pattern来判断图片是什么，比如鸟嘴，鸟眼睛，翅膀等。所以并不需要看完整的图片~     简化1一个neuron在意自己field里发生的事情就好：   那怎么决定看哪个field呢？   第四个问题是指：可不可以不是正方形，长">
+<meta property="og:description" content="简介引入    输入：     拉直成一个向量。     但是参数太多，容易over fitting，考虑图像的特性，不一定需要全神经元。 观察1—不用全看neuron会看到特别的pattern来判断图片是什么，比如鸟嘴，鸟眼睛，翅膀等。所以并不需要看完整的图片~     简化1一个neuron在意自己field里发生的事情就好：     那怎么决定看哪个field呢？     第四个问题是指：可">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220730105232803.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220730105359479.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803114218263.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803114632246.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803114938779.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803115154448.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803115729043.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803115852270.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803120224229.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803120420138.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803162531448.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803162710995.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803162933785.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803163448363.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803163631678.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164029838.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164106988.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164226349.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164417903.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164437245.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164529458.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164742494.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803165021469.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803165202953.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803165359600.png">
-<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803165608079.png">
+<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803171955806.png">
 <meta property="article:published_time" content="2022-08-03T08:33:24.000Z">
-<meta property="article:modified_time" content="2022-08-03T09:07:30.554Z">
+<meta property="article:modified_time" content="2022-08-03T09:22:14.843Z">
 <meta property="article:author" content="Camille">
 <meta property="article:tag" content="Deep learning">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220730105232803.png">
+<meta name="twitter:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803171955806.png">
   
   
   
@@ -217,7 +192,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803171955806.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -300,13 +275,19 @@
             
               <div class="markdown-body">
                 
-                <h3 id="简介引入"><a href="#简介引入" class="headerlink" title="简介引入"></a>简介引入</h3><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220730105232803.png" srcset="/img/loading.gif" lazyload alt="模型3" style="zoom: 33%;" />
+                <h3 id="简介引入"><a href="#简介引入" class="headerlink" title="简介引入"></a>简介引入</h3><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220730105232803.png" srcset="/img/loading.gif" lazyload name="模型3" style="zoom: 33%;" />
+
+
 
 <p>输入：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220730105359479.png" srcset="/img/loading.gif" lazyload alt="输入" style="zoom: 33%;" />
 
+
+
 <p>拉直成一个向量。</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803114218263.png" srcset="/img/loading.gif" lazyload alt="全连接网络" style="zoom: 33%;" />
+
+
 
 <p>但是参数太多，容易over fitting，考虑图像的特性，不一定需要全神经元。</p>
 <h4 id="观察1—不用全看"><a href="#观察1—不用全看" class="headerlink" title="观察1—不用全看"></a>观察1—不用全看</h4><p>neuron会看到特别的pattern来判断图片是什么，比如鸟嘴，鸟眼睛，翅膀等。所以并不需要看完整的图片~</p>
@@ -317,8 +298,12 @@
 <h5 id="简化1"><a href="#简化1" class="headerlink" title="简化1"></a>简化1</h5><p>一个neuron在意自己field里发生的事情就好：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803114938779.png" srcset="/img/loading.gif" lazyload alt="只考虑一个Receptive field" style="zoom: 33%;" />
 
+
+
 <p>那怎么决定看哪个field呢？</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803115154448.png" srcset="/img/loading.gif" lazyload alt="可以重叠，右边问题的回答都是可以！" style="zoom: 33%;" />
+
+
 
 <p>第四个问题是指：可不可以不是正方形，长方形怎么样！</p>
 <h5 id="Typical-setting"><a href="#Typical-setting" class="headerlink" title="Typical setting"></a>Typical setting</h5><p>kernel size一般不会设置太大，这里先设置3*3.</p>
@@ -328,7 +313,11 @@
 
 
 
+
+
 <h4 id="观察2—–同一个pattern可能在图片的不同地方"><a href="#观察2—–同一个pattern可能在图片的不同地方" class="headerlink" title="观察2—–同一个pattern可能在图片的不同地方"></a>观察2—–同一个pattern可能在图片的不同地方</h4><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803115852270.png" srcset="/img/loading.gif" lazyload alt="侦测鸟嘴的neuron" style="zoom: 33%;" />
+
+
 
 <p>难道需要每个位置都放一个侦测鸟嘴的neuron吗？</p>
 <h5 id="简化2"><a href="#简化2" class="headerlink" title="简化2"></a>简化2</h5><p>共享参数！</p>
@@ -357,13 +346,19 @@
 <p>filter和框框里的矩阵相乘，然后移动一个stride，最后形成了新的矩阵：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803162933785.png" srcset="/img/loading.gif" lazyload alt="示意图" style="zoom: 33%;" />
 
+
+
 <p>观察这个filter，发现它很在乎斜线那三个数字，这就是它的效果。</p>
 <p>再用第二个filter：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803163448363.png" srcset="/img/loading.gif" lazyload alt="第二个filter" style="zoom:33%;" />
 
+
+
 <p>用完n个filter会有n个新矩阵，这些叫做Feature map。</p>
 <p>因此通过conv layer会产生一个feature map。有多少filter就有多少channel。</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803163631678.png" srcset="/img/loading.gif" lazyload alt="注意维度" style="zoom:33%;" />
+
+
 
 <p>3*3的kernel会不会视野太小？不会噢！</p>
 <p>因为不止一个conv layer！这样原矩阵缩小，缩小，3*3的kernel也能发现原矩阵上距离很远的地方噢！</p>
@@ -375,6 +370,8 @@
 <p>比较两种说法：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164106988.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
 
+
+
 <h2 id="Pooling"><a href="#Pooling" class="headerlink" title="Pooling"></a>Pooling</h2><h4 id="观察3—-可以把图片变小一点！"><a href="#观察3—-可以把图片变小一点！" class="headerlink" title="观察3—-可以把图片变小一点！"></a>观察3—-可以把图片变小一点！</h4><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164226349.png" srcset="/img/loading.gif" lazyload style="zoom: 33%;" />
 
 
@@ -385,9 +382,13 @@
 
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164437245.png" srcset="/img/loading.gif" lazyload alt="选择后" style="zoom:33%;" />
 
+
+
 <p>（哪几个一组是自己定的）</p>
 <p>pooling之后：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803164529458.png" srcset="/img/loading.gif" lazyload alt="就变成了这样捏" style="zoom: 33%;" />
+
+
 
 <p>但是由于计算能力越来越强，有时也不用pooling了。</p>
 <h2 id="CNN架构"><a href="#CNN架构" class="headerlink" title="CNN架构"></a>CNN架构</h2><p>Flatten：把矩阵拉直成一个向量</p>
@@ -397,6 +398,8 @@
 
 <h2 id="应用：下围棋Playing-Go"><a href="#应用：下围棋Playing-Go" class="headerlink" title="应用：下围棋Playing Go"></a>应用：下围棋Playing Go</h2><p>把棋盘表示成一个向量，黑子表示值为1，白子-1，没子0.</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803165021469.png" srcset="/img/loading.gif" lazyload alt="Playing Go" style="zoom:33%;" />
+
+
 
 <p>48个channel表示有48种位置描述（理解成战术啦）</p>
 <p>为什么可以用在下围棋上呢？因为围棋和图片有共同特性👇</p>
@@ -411,6 +414,8 @@
 
 <h2 id="CNN的缺陷"><a href="#CNN的缺陷" class="headerlink" title="CNN的缺陷"></a>CNN的缺陷</h2><p>放大缩小之后就看不出来了：</p>
 <img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803165608079.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
+
+
 
 <p>所以要做data augmentation或者用spatial layer</p>
 
