@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/junko.png">
+  <link rel="icon" href="/img/junko.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Camille">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1   1234567891011&gt;&gt;&gt; drill &#x3D; crust &gt;&gt;&gt; drill &#x3D; drill() #drill &#x3D; (调用一次curst()) mantle______&gt;&gt;&gt; drill &#x3D; drill() #drill &#x3D; (调用一次mantle()) core______&gt;&gt;&gt; drill &#x3D; drill()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61A-lab4">
+<meta property="og:url" content="http://example.com/2022/08/08/CS61A/lab4/index.html">
+<meta property="og:site_name" content="Tank Land">
+<meta property="og:description" content="1   1234567891011&gt;&gt;&gt; drill &#x3D; crust &gt;&gt;&gt; drill &#x3D; drill() #drill &#x3D; (调用一次curst()) mantle______&gt;&gt;&gt; drill &#x3D; drill() #drill &#x3D; (调用一次mantle()) core______&gt;&gt;&gt; drill &#x3D; drill()">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808110030594.png">
+<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808112017089.png">
+<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808164126239.png">
+<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808230029873.png">
+<meta property="og:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808172611493.png">
+<meta property="article:published_time" content="2022-08-08T12:33:24.000Z">
+<meta property="article:modified_time" content="2022-08-08T15:03:45.779Z">
+<meta property="article:author" content="Camille">
+<meta property="article:tag" content="Computer Sciense">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808110030594.png">
+  
+  
+  
+  <title>CS61A-lab4 - Tank Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Space Ball</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220803171955806.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CS61A-lab4"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-08 20:33" pubdate>
+          August 8, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CS61A-lab4</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808110030594.png" srcset="/img/loading.gif" lazyload alt="image-20220808110030594" style="zoom:67%;" />
+
+<p><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808112017089.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>drill = crust <br><span class="hljs-meta">&gt;&gt;&gt; </span>drill = drill() <span class="hljs-comment">#drill = (调用一次curst()) mantle</span><br>______<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>drill = drill() <span class="hljs-comment">#drill = (调用一次mantle()) core</span><br>______<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>drill = drill() <span class="hljs-comment">#drill = (调用一次core() 调用一次mantle()) core </span><br>______<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>drill() <span class="hljs-comment">#即调用了core(),调用完后要显示drill()的返回值哦</span><br></code></pre></td></tr></table></figure>
+
+<p>注意括号。</p>
+<p>还有注意return 之前调用了什么。core里的<code>mantle( )</code>是直接调用了一次mantle噢</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>2简单，这里不写了</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808164126239.png" srcset="/img/loading.gif" lazyload alt="三角形示意图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pascal</span>(<span class="hljs-params">row, column</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Returns the value of the item in Pascal&#x27;s Triangle </span><br><span class="hljs-string">    whose position is specified by row and column.</span><br><span class="hljs-string">    &gt;&gt;&gt; pascal(0, 0)</span><br><span class="hljs-string">    1</span><br><span class="hljs-string">    &gt;&gt;&gt; pascal(0, 5)	# Empty entry; outside of Pascal&#x27;s Triangle</span><br><span class="hljs-string">    0</span><br><span class="hljs-string">    &gt;&gt;&gt; pascal(3, 2)	# Row 3 (1 3 3 1), Column 2</span><br><span class="hljs-string">    3</span><br><span class="hljs-string">    &gt;&gt;&gt; pascal(4, 2)     # Row 4 (1 4 6 4 1), Column 2</span><br><span class="hljs-string">    6</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span><br>    <span class="hljs-keyword">if</span> row &lt; column:    <span class="hljs-comment"># outside of the Pascal&#x27;s Triangle</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> column:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> pascal(row - <span class="hljs-number">1</span>, column - <span class="hljs-number">1</span>) + pascal(row - <span class="hljs-number">1</span>, column)<br><br></code></pre></td></tr></table></figure>
+
+<p>弄清楚这个三角形的定义，和分清楚每种情况就可以</p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">paths</span>(<span class="hljs-params">m, n</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Return the number of paths from one corner of an</span><br><span class="hljs-string">    M by N grid to the opposite corner.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    &gt;&gt;&gt; paths(2, 2)</span><br><span class="hljs-string">    2</span><br><span class="hljs-string">    &gt;&gt;&gt; paths(5, 7)</span><br><span class="hljs-string">    210</span><br><span class="hljs-string">    &gt;&gt;&gt; paths(117, 1)</span><br><span class="hljs-string">    1</span><br><span class="hljs-string">    &gt;&gt;&gt; paths(1, 157)</span><br><span class="hljs-string">    1</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span><br>    <span class="hljs-keyword">if</span> m == <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> n == <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> paths(m - <span class="hljs-number">1</span>, n) + paths(m, n - <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这题还是稍稍有点难度</p>
+<p>注意不要重复了。</p>
+<p>思路就是只看最后一步。不管是一次到位还是一次没到位的，都只看一步（否则会重复）</p>
+<p><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808230029873.png" srcset="/img/loading.gif" lazyload alt="3*3的情况"></p>
+<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><p><img src="http://camillle-img.oss-cn-hangzhou.aliyuncs.com/img/image-20220808172611493.png" srcset="/img/loading.gif" lazyload alt="知识点补充"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">couple</span>(<span class="hljs-params">s, t</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Return a list of two-element lists in which the i-th element is [s[i], t[i]].</span><br><span class="hljs-string"></span><br><span class="hljs-string">    &gt;&gt;&gt; a = [1, 2, 3]</span><br><span class="hljs-string">    &gt;&gt;&gt; b = [4, 5, 6]</span><br><span class="hljs-string">    &gt;&gt;&gt; couple(a, b)</span><br><span class="hljs-string">    [[1, 4], [2, 5], [3, 6]]</span><br><span class="hljs-string">    &gt;&gt;&gt; c = [&#x27;c&#x27;, 6]</span><br><span class="hljs-string">    &gt;&gt;&gt; d = [&#x27;s&#x27;, &#x27;1&#x27;]</span><br><span class="hljs-string">    &gt;&gt;&gt; couple(c, d)</span><br><span class="hljs-string">    [[&#x27;c&#x27;, &#x27;s&#x27;], [6, &#x27;1&#x27;]]</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">assert</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-built_in">len</span>(t)<br>    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span><br>    lst = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>        sublst = []<br>        sublst.append(s[i])<br>        sublst.append(t[i])<br>        lst.append(sublst)<br>    <span class="hljs-keyword">return</span> lst<br></code></pre></td></tr></table></figure>
+
+<h2 id="6"><a href="#6" class="headerlink" title="6"></a>6</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">coords</span>(<span class="hljs-params">fn, seq, lower, upper</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    &gt;&gt;&gt; seq = [-4, -2, 0, 1, 3]</span><br><span class="hljs-string">    &gt;&gt;&gt; fn = lambda x: x**2</span><br><span class="hljs-string">    &gt;&gt;&gt; coords(fn, seq, 1, 9)</span><br><span class="hljs-string">    [[-2, 4], [1, 1], [3, 9]]</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span><br>    <span class="hljs-keyword">return</span> [[i, fn(i)] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> seq <span class="hljs-keyword">if</span> fn(i) &gt;= lower <span class="hljs-keyword">and</span> fn(i) &lt;= upper]<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7"><a href="#7" class="headerlink" title="7"></a>7</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">riffle</span>(<span class="hljs-params">deck</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Produces a single, perfect riffle shuffle of DECK, consisting of</span><br><span class="hljs-string">    DECK[0], DECK[M], DECK[1], DECK[M+1], ... where M is position of the</span><br><span class="hljs-string">    second half of the deck.  Assume that len(DECK) is even.</span><br><span class="hljs-string">    &gt;&gt;&gt; riffle([3, 4, 5, 6])</span><br><span class="hljs-string">    [3, 5, 4, 6]</span><br><span class="hljs-string">    &gt;&gt;&gt; riffle(range(20))</span><br><span class="hljs-string">    [0, 10, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19]</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span><br>    lst = []<br>    fr = <span class="hljs-number">0</span><br>    bc = <span class="hljs-built_in">len</span>(deck) // <span class="hljs-number">2</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(deck)):<br>        <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span>:<br>            lst.append(deck[bc])<br>            bc += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            lst.append(deck[fr])<br>            fr += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> lst<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CS61A/" class="category-chain-item">CS61A</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Computer-Sciense/">#Computer Sciense</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CS61A-lab4</div>
+      <div>http://example.com/2022/08/08/CS61A/lab4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Camille</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 8, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/03/DL/3-CNN/" title="李宏毅DL3-CNN">
+                        <span class="hidden-mobile">李宏毅DL3-CNN</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
